@@ -24,7 +24,6 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include <QPainter>
-#include <QPainterPath>
 #include <QRadialGradient>
 #include <QScreen>
 
@@ -107,7 +106,7 @@ SplashScreen::SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const Netw
 
     QRect welcomeRect(0, splashSize.height() - statusHeight - welcomeTextHeight - 40, splashSize.width() -20, welcomeTextHeight);
     pixPaint.setFont(QFont(font, 10 * fontFactor, QFont::Bold));
-    pixPaint.drawText(welcomeRect, Qt::AlignRight | Qt::AlignTop, "Qtum-Qt Wallet");
+    pixPaint.drawText(welcomeRect, Qt::AlignRight | Qt::AlignTop, "Evo-Qt Wallet");
 
     // draw copyright stuff
     QFont statusFont = QApplication::font();

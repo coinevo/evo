@@ -25,7 +25,7 @@
 #include <wallet/wallet.h>
 #include <wallet/walletutil.h>
 #include <key_io.h>
-#include <qtum/qtumdelegation.h>
+#include <qtum/evodelegation.h>
 #include <miner.h>
 
 #include <memory>

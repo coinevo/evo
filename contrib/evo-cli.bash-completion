@@ -1,9 +1,9 @@
-# bash programmable completion for qtum-cli(1)
+# bash programmable completion for evo-cli(1)
 # Copyright (c) 2012-2016 The Bitcoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# call $qtum-cli for RPC
+# call $evo-cli for RPC
 _qtum_rpc() {
     # determine already specified args necessary for RPC
     local rpcargs=()
@@ -28,8 +28,8 @@ _qtum_cli() {
     local cur prev words=() cword
     local qtum_cli
 
-    # save and use original argument to invoke qtum-cli for -help, help and RPC
-    # as qtum-cli might not be in $PATH
+    # save and use original argument to invoke evo-cli for -help, help and RPC
+    # as evo-cli might not be in $PATH
     qtum_cli="$1"
 
     COMPREPLY=()
@@ -143,7 +143,7 @@ _qtum_cli() {
             ;;
     esac
 } &&
-complete -F _qtum_cli qtum-cli
+complete -F _qtum_cli evo-cli
 
 # Local variables:
 # mode: shell-script

@@ -145,10 +145,10 @@
     </message>
 </context>
 <context>
-    <name>QtumGUI</name>
+    <name>EvoGUI</name>
     <message>
-        <source>Send coins to a Qtum address</source>
-        <translation>ផ្ញើកាក់ទៅកាន់ អាសយដ្ឋាន Qtum មួយ</translation>
+        <source>Send coins to a Evo address</source>
+        <translation>ផ្ញើកាក់ទៅកាន់ អាសយដ្ឋាន Evo មួយ</translation>
     </message>
     </context>
 <context>
@@ -313,6 +313,6 @@
     </message>
     </context>
 <context>
-    <name>qtum-core</name>
+    <name>evo-core</name>
     </context>
 </TS>

@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Qtum-Qt</string>
+  <string>Evo-Qt</string>
 
   <key>CFBundleName</key>
-  <string>Qtum-Qt</string>
+  <string>Evo-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.qtumproject.Qtum-Qt</string>
+  <string>org.coinevo.Evo-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -49,7 +49,7 @@
       <string>org.qtum.QtumPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>qtum</string>
+        <string>evo</string>
       </array>
     </dict>
   </array>
@@ -60,7 +60,7 @@
       <key>UTTypeIdentifier</key>
       <string>org.qtum.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Qtum payment request</string>
+      <string>Evo payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>

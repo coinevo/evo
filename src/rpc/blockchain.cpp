@@ -40,7 +40,7 @@
 #include <pos.h>
 #include <txdb.h>
 #include <util/convert.h>
-#include <qtum/qtumdelegation.h>
+#include <qtum/evodelegation.h>
 
 #include <assert.h>
 #include <stdint.h>
@@ -202,12 +202,12 @@ UniValue blockheaderToJSON(const CBlockIndex* tip, const CBlockIndex* blockindex
     result.pushKV("difficulty", GetDifficulty(blockindex));
     result.pushKV("chainwork", blockindex->nChainWork.GetHex());
     result.pushKV("nTx", (uint64_t)blockindex->nTx);
-    result.pushKV("hashStateRoot", blockindex->hashStateRoot.GetHex()); // qtum
-    result.pushKV("hashUTXORoot", blockindex->hashUTXORoot.GetHex()); // qtum
+    result.pushKV("hashStateRoot", blockindex->hashStateRoot.GetHex()); // evo
+    result.pushKV("hashUTXORoot", blockindex->hashUTXORoot.GetHex()); // evo
 
     if(blockindex->IsProofOfStake()){
-        result.pushKV("prevoutStakeHash", blockindex->prevoutStake.hash.GetHex()); // qtum
-        result.pushKV("prevoutStakeVoutN", (int64_t)blockindex->prevoutStake.n); // qtum
+        result.pushKV("prevoutStakeHash", blockindex->prevoutStake.hash.GetHex()); // evo
+        result.pushKV("prevoutStakeVoutN", (int64_t)blockindex->prevoutStake.n); // evo
     }
 
     if (blockindex->pprev)
@@ -239,12 +239,12 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* tip, const CBlockIn
     result.pushKV("version", block.nVersion);
     result.pushKV("versionHex", strprintf("%08x", block.nVersion));
     result.pushKV("merkleroot", block.hashMerkleRoot.GetHex());
-    result.pushKV("hashStateRoot", block.hashStateRoot.GetHex()); // qtum
-    result.pushKV("hashUTXORoot", block.hashUTXORoot.GetHex()); // qtum
+    result.pushKV("hashStateRoot", block.hashStateRoot.GetHex()); // evo
+    result.pushKV("hashUTXORoot", block.hashUTXORoot.GetHex()); // evo
 
     if(blockindex->IsProofOfStake()){
-        result.pushKV("prevoutStakeHash", blockindex->prevoutStake.hash.GetHex()); // qtum
-        result.pushKV("prevoutStakeVoutN", (int64_t)blockindex->prevoutStake.n); // qtum
+        result.pushKV("prevoutStakeHash", blockindex->prevoutStake.hash.GetHex()); // evo
+        result.pushKV("prevoutStakeVoutN", (int64_t)blockindex->prevoutStake.n); // evo
     }
 
     UniValue txs(UniValue::VARR);
@@ -291,7 +291,7 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* tip, const CBlockIn
     return result;
 }
 
-//////////////////////////////////////////////////////////////////////////// // qtum
+//////////////////////////////////////////////////////////////////////////// // evo
 UniValue executionResultToJSON(const dev::eth::ExecutionResult& exRes)
 {
     UniValue result(UniValue::VOBJ);
@@ -1242,13 +1242,13 @@ static UniValue getblock(const JSONRPCRequest& request)
     return blockToJSON(block, tip, pblockindex, verbosity >= 2);
 }
 
-////////////////////////////////////////////////////////////////////// // qtum
+////////////////////////////////////////////////////////////////////// // evo
 UniValue callcontract(const JSONRPCRequest& request)
 {
             RPCHelpMan{"callcontract",
-                "\nCall contract methods offline, or test contract deployment offline.\n",
+                "\nCall contract methods offline.\n",
                 {
-                    {"address", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The contract address, or empty address \"\""},
+                    {"address", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The contract address"},
                     {"data", RPCArg::Type::STR_HEX, RPCArg::Optional::NO, "The data hex string"},
                     {"senderAddress", RPCArg::Type::STR, RPCArg::Optional::OMITTED_NAMED_ARG, "The sender address string"},
                     {"gasLimit", RPCArg::Type::NUM, RPCArg::Optional::OMITTED_NAMED_ARG, "The gas limit for executing the contract."},
@@ -1285,9 +1285,7 @@ UniValue callcontract(const JSONRPCRequest& request)
                 },
                 RPCExamples{
                     HelpExampleCli("callcontract", "eb23c0b3e6042821da281a2e2364feb22dd543e3 06fdde03")
-            + HelpExampleCli("callcontract", "\"\" 60606040525b33600060006101000a81548173ffffffffffffffffffffffffffffffffffffffff02191690836c010000000000000000000000009081020402179055506103786001600050819055505b600c80605b6000396000f360606040526008565b600256")
             + HelpExampleRpc("callcontract", "eb23c0b3e6042821da281a2e2364feb22dd543e3 06fdde03")
-            + HelpExampleRpc("callcontract", "\"\" 60606040525b33600060006101000a81548173ffffffffffffffffffffffffffffffffffffffff02191690836c010000000000000000000000009081020402179055506103786001600050819055505b600c80605b6000396000f360606040526008565b600256")
                 },
             }.Check(request);
  
@@ -1299,16 +1297,12 @@ UniValue callcontract(const JSONRPCRequest& request)
     if(data.size() % 2 != 0 || !CheckHex(data))
         throw JSONRPCError(RPC_TYPE_ERROR, "Invalid data (data not hex)");
 
-    dev::Address addrAccount;
-    if(strAddr.size() > 0)
-    {
-        if(strAddr.size() != 40 || !CheckHex(strAddr))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Incorrect address");
-
-        addrAccount = dev::Address(strAddr);
-        if(!globalState->addressInUse(addrAccount))
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Address does not exist");
-    }
+    if(strAddr.size() != 40 || !CheckHex(strAddr))
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Incorrect address");
+ 
+    dev::Address addrAccount(strAddr);
+    if(!globalState->addressInUse(addrAccount))
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Address does not exist");
     
     dev::Address senderAddress;
     if(request.params.size() >= 3){
@@ -1927,7 +1921,7 @@ UniValue getdelegationinfoforaddress(const JSONRPCRequest& request)
             RPCHelpMan{"getdelegationinfoforaddress",
                 "\nGet delegation information for an address.\n",
                 {
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The qtum address string"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The evo address string"},
                 },
                 RPCResult{
             "{\n"
@@ -2002,7 +1996,7 @@ UniValue getdelegationsforstaker(const JSONRPCRequest& request)
                 "requires -logevents to be enabled\n"
                 "\nGet the current list of delegates for a super staker.\n",
                 {
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The qtum address string for staker"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The evo address string for staker"},
                 },
                 RPCResult{
             "[{\n"
@@ -2239,8 +2233,8 @@ UniValue gettxout(const JSONRPCRequest& request)
             "     \"hex\" : \"hex\",        (string) \n"
             "     \"reqSigs\" : n,          (numeric) Number of required signatures\n"
             "     \"type\" : \"pubkeyhash\", (string) The type, eg pubkeyhash\n"
-            "     \"addresses\" : [          (array of string) array of qtum addresses\n"
-            "        \"address\"     (string) qtum address\n"
+            "     \"addresses\" : [          (array of string) array of evo addresses\n"
+            "        \"address\"     (string) evo address\n"
             "        ,...\n"
             "     ]\n"
             "  },\n"
