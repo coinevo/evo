@@ -1,7 +1,7 @@
 What is Coinevo?
 -------------
 
-Coinevo is a decentralized blockchain project built on Bitcoin's UTXO model, with support for Ethereum Virtual Machine based smart contracts, and secured by a proof of stake consensus model. It achieves this through the revolutionary Account Abstraction Layer which allows the EVM to communicate with Coinevo's Bitcoin-like UTXO blockchain. For more general information about Coinevo as well as links to join our community, go to https://qtum.org
+Coinevo is a decentralized blockchain project forked from qtum which is built on Bitcoin's UTXO model, with support for Ethereum Virtual Machine based smart contracts, and secured by a proof of stake consensus model. It achieves this through the revolutionary Account Abstraction Layer which allows the EVM to communicate with Coinevo's Bitcoin-like UTXO blockchain. For more general information about Coinevo as well as links to join our community, go to https://coinevo.tech
 
 Welcome to the Coinevo Ignition Main Network. This is the main network where the tokens hold value and should be guarded very carefully. If you are testing the network, or developing unstable software on Coinevo, we highly recommend using either testnet or regtest mode. 
 
@@ -17,34 +17,6 @@ Note: Coinevo Core is considered beta software. We make no warranties or guarant
 Coinevo Documentation and Usage Resources
 ---------------
 
-These are some resources that might be helpful in understanding Coinevo.
-
-Basic usage resources:
-
-* [User guide](https://docs.qtum.site/en/)
-* [Qtum-Qt Wallet Tutorial](https://github.com/coinevo/documents/tree/master/en/Qtum-Wallet-Tutorial#evo-qt-wallet-tutorial)
-* [Coinevo staking tutorial](https://github.com/coinevo/documents/tree/master/en/How-to-Stake-with-Coinevo)
-* [Coinevo tutorial on Raspberry Pi](https://github.com/coinevo/documents/tree/master/en/Coinevo-on-Raspberry-Pi)
-* [Running Coinevo on Amazon AWS using Coinevo AMI](https://github.com/coinevo/documents/tree/master/en/Coinevo-AWS)
-* [Encrypting and unlocking wallet](https://github.com/coinevo/documents/tree/master/en/Encrypt-and-Unlock-Coinevo-Wallet)
-* [Testnet guide](https://github.com/coinevo/documents/blob/master/en/Testnet-User-Guide.md)
-* [Block explorer](https://qtum.info), [Older explorer](https://explorer.qtum.org)
-
-
-Development resources:
-
-* [Coinevo Book - A Developer's Guide To Coinevo](http://book.qtum.site/en/)
-* [Coinevo contract usage](https://docs.qtum.site/en/QRC20-Token-Introduce.html)
-* [Deploying a custom token to Coinevo](https://blog.qtum.org/qtum-custom-token-walkthrough-467d725fa27d)
-* [CoinevoJS document](https://coinevo.github.io/qtumjs-doc/)
-* [Smart contract ICO example](http://book.qtum.site/en/part3/ico.htm)
-* [Early example faucet contract](http://earlz.net/view/2017/06/30/2144/the-qtum-sparknet-faucet)
-
-General Info about Coinevo:
-
-* [CIRCLERESEARCH Coinevo Primer](https://www.circle.com/marketing/pdfs/research/circle-research-qtum.pdf)
-* [Coinevo's PoS vs CASPER](https://www.reddit.com/r/Qtum/comments/788oa5/qtums_pos_vs_casper_and_the_nothingatstake_problem/)
-* [Technical article explaining Coinevo's PoS model in depth](http://earlz.net/view/2017/07/27/1904/the-missing-explanation-of-proof-of-stake-version)
 
 
 Developer's Tools
@@ -53,15 +25,14 @@ Developer's Tools
 * Smart contract deployment tool
   * https://github.com/coinevo/solar
 * DApp JavaScript Library
-  * https://github.com/coinevo/qtumjs
+  * https://github.com/coinevo/evojs
 * A toolkit for building qtum light wallets
-  * https://github.com/coinevo/qtumjs-wallet
+  * https://github.com/coinevo/evojs-wallet
 * CORS evod RPC proxy for DApp
-  * https://github.com/coinevo/qtumportal
-* Docker images for running qtum services
-  * https://github.com/coinevo/qtum-docker
-* qtum.info API that powers the block explorer and the QTUM Web wallet
-  * https://github.com/coinevo/qtuminfo-api#qtuminfo-api-documentation
+  * https://github.com/coinevo/evoportal
+* Docker images for running evo services
+  * https://github.com/coinevo/evo-docker
+
 
 
 What is Coinevo Core?
@@ -87,47 +58,6 @@ Alternative Wallets
 
 Coinevo Core uses a full node model, and thus requires downloading the entire blockchain. If you do not need the entire blockchain, and do not intend on developing smart contracts, it may be more ideal to use an alternative wallet such as one of our light wallets that can be synchronized in a matter of seconds. 
 
-### Coinevo Web Wallet
-
-A browser wallet that supports the Ledger hardware wallet, offline cold wallet, and restoration from mobile wallets.
-
-Web site https://qtumwallet.org
-
-User documentation https://github.com/coinevo/documents/tree/master/en/QTUM-WebWallet-usage
-
-### Coinevo Electrum
-
-A light wallet that supports the Ledger and Trezor hardware wallets and is based on the well-known Electrum wallet software. 
-
-Download: https://github.com/coinevo/qtum-electrum/releases
-
-### iOS and Android Wallets
-
-These wallets run on mobile devices and synchronize quickly. 
-
-Android Download: https://play.google.com/store/apps/details?id=org.qtum.newwallet
-
-iOS Download: https://github.com/coinevo/qtum-ios (open source, deprecated)
-
-### Ledger Chrome Wallet
-
-This light wallet runs in your Chrome browser as a browser extension. This wallet requires a Ledger device to use.
-
-How to install: https://ledger.zendesk.com/hc/en-us/articles/115003776913-How-to-install-and-use-Qtum-with-Ledger
-
-
-### Community Resources
-
-Make sure to check out these resources as well for more information and to keep up to date with all the latest news about Qtum. At least 1 developer is always around, so if you're developing on Coinevo and need help, we'd love to welcome you to our community.
-
-*	@Coinevo on Twitter https://twitter.com/qtum
-* Coinevo blog https://blog.qtum.org/
-*	Coinevo Telegram Group https://t.me/qtumofficial, other languages available
-* Coinevo Discord https://discordapp.com/invite/wRfmkQ9
-*	/r/Coinevo on Reddit https://www.reddit.com/r/Qtum/
-*	Qtum.org https://qtum.org
-*	Qtum on Facebook https://www.facebook.com/QtumOfficial/
-*	Qtum Forum https://forum.qtum.org
 
 ### Coinevo Smart Contract Limitations
 
@@ -143,7 +73,7 @@ Make sure to check out these resources as well for more information and to keep 
 
 ### Validate and Reproduce Binaries
 
-Coinevo uses a tool called Gitian to make reproducible builds that can be verified by anyone. Instructions on setting up a Gitian VM and building Coinevo are provided in [Gitan Building](https://github.com/coinevo/qtum/blob/master/doc/gitian-building.md)
+Coinevo uses a tool called Gitian to make reproducible builds that can be verified by anyone. Instructions on setting up a Gitian VM and building Coinevo are provided in [Gitan Building](https://github.com/coinevo/evo/blob/master/doc/gitian-building.md)
 
 ### Build on Ubuntu
 
@@ -159,7 +89,7 @@ This is a quick start script for compiling Coinevo on Ubuntu
     # If you want to build the Qt GUI:
     sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler qrencode
 
-    git clone https://github.com/coinevo/qtum --recursive
+    git clone https://github.com/coinevo/evo --recursive
     cd qtum
 
     # Note autogen will prompt to install some more dependencies if needed
@@ -189,7 +119,7 @@ Here is a brief description for compiling Coinevo on CentOS, for more details pl
     sudo yum install qt5-qttools-devel protobuf-devel qrencode-devel
     
     # Building Coinevo
-    git clone --recursive https://github.com/coinevo/qtum.git
+    git clone --recursive https://github.com/coinevo/evo.git
     cd qtum
     ./autogen.sh
     ./configure
@@ -220,7 +150,7 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI
 
 1. Clone the qtum source code and cd into `qtum`
 
-        git clone --recursive https://github.com/coinevo/qtum.git
+        git clone --recursive https://github.com/coinevo/evo.git
         cd qtum
 
 2.  Build qtum-core:
@@ -251,10 +181,10 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/coinevo/qtum/tags) are created
+completely stable. [Tags](https://github.com/coinevo/evo/tags) are created
 regularly to indicate new official, stable release versions of Coinevo.
 
-The contribution workflow is described in [CONTRIBUTING.md](https://github.com/coinevo/qtum/blob/master/CONTRIBUTING.md).
+The contribution workflow is described in [CONTRIBUTING.md](https://github.com/coinevo/evo/blob/master/CONTRIBUTING.md).
 
 
 Testing
