@@ -267,14 +267,20 @@ public:
         checkpointData = {
             {
                 {0, uint256S("0000e803ee215c0684ca0d2f9220594d3f828617972aad66feb2ba51f5e14222")},
+                {10, uint256S("0000d730cd6f51c71ab9f1503ebbbcaa131a7bfbad596f8028085cc9d6690a0e")},
+                {15, uint256S("0000bcc626fc6e247d110cbac2bb5deaffc2d901e7181d81e46b6ff73a2fcbd8")},
+                {16, uint256S("0000948aef1f90320556bc3378cdb6f1560f20b9f8915952e7d48870de513142")},
+                {17, uint256S("00008711ac852720427d54d2dc3f56257272d219e10a6f884731ffcff15855b4")},
+                {5000, uint256S("0000a6418c69622c5db35cdb76abbfa740c47c588235522e6fa0879ba321d0cb")},
+                {5001, uint256S("5d8303a8994703282640d69cee40fdf0138885550e19e9eb9563158ba7c7c8a4")},
             }
         };
 
         chainTxData = ChainTxData{
-            // Data as of block babfd02d9dd271a12a2fd1b8ba95a0c73aca9a0b25889d3340a7ca3fb406a2cf (height 496333)
-            1504695029,
-            0,
-            0
+            // Data as of block 7c253ca3e952bd7a26e21facef147e3bd51add5303affcd0b03f6dd23c25e612 (height 5125)
+            1596746848,
+            5178,
+            0.4634386467376712
         };
 
         consensus.nLastPOWBlock = 5000;
